@@ -1,13 +1,11 @@
-package capitlistspz;
+package com.github.capitlistspz;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.sun.org.apache.xpath.internal.operations.Lt;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.minecraft.client.util.math.Vector3d;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.command.argument.ObjectiveArgumentType;
 import net.minecraft.command.argument.ScoreHolderArgumentType;
@@ -16,21 +14,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.LiteralText;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.jmx.Server;
-
 import java.text.DecimalFormat;
-
-import static capitlistspz.useful_commands.MOD_ID;
 import static net.minecraft.server.command.CommandManager.*;
 
 public class Commands {
@@ -72,7 +63,7 @@ public class Commands {
                                                     .executes(cmd->{
                                                         World world = cmd.getSource().getWorld();
                                                         if (world == null){
-                                                            cmd.getSource().sendFeedback(new LiteralText("This command must be executed in a world."),false);
+                                                            cmd.getSource().sendFeedback(new LiteralText("Failure: This command must be executed in a world."),false);
                                                             return SINGLE_FAIL;
                                                         }
                                                         ScoreboardPlayerScore targetScore = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"target"),ObjectiveArgumentType.getObjective(cmd,"targetObjective"));
@@ -87,7 +78,7 @@ public class Commands {
                                     .executes(cmd->{
                                         World world = cmd.getSource().getWorld();
                                         if (world == null){
-                                            cmd.getSource().sendFeedback(new LiteralText("This command must be executed in a world."),false);
+                                            cmd.getSource().sendFeedback(new LiteralText("Failure: This command must be executed in a world."),false);
                                             return SINGLE_FAIL;
                                         }
                                         ScoreboardPlayerScore targetScore = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"target"),ObjectiveArgumentType.getObjective(cmd,"targetObjective"));
