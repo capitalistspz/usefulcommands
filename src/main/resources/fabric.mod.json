@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "useful_commands",
+  "version": "${version}",
+  "name": "UsefulCommands",
+  "description": "Hopefully adds in server-side commands and info that may be useful for datapack usage",
+  "authors": [
+    "capitalistspz"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/useful_commands/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "capitlistspz.useful_commands"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.10.8",
+    "fabric": "*",
+    "minecraft": "1.16.4"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#extra:zombies",
+    "#minecraft:skeletons",
+    "minecraft:wither",
+    "minecraft:zombie_horse",
+    "minecraft:skeleton_horse",
+    "minecraft:phantom",
+    "minecaft:zombified_piglin",
+    "minecraft:zoglin"
+  ]
+}
