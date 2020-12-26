@@ -9,7 +9,7 @@ More datapack tags (e.g. #extra:zombies)
 
 `/velocity` (modify and get motion, even works with players)
 
-`/damage` (deal damage to an entity)
+`/damage` and `/heal` (modify health, also works with players)
 
 
 Q: Why even use this mod? What's the point of using datapacks if you're already using mods.
