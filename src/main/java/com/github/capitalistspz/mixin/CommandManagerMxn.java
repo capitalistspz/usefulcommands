@@ -1,9 +1,9 @@
 package com.github.capitalistspz.mixin;
 
-import com.github.capitalistspz.command.DamageCommand;
-import com.github.capitalistspz.command.ExScoreboardCommand;
-import com.github.capitalistspz.command.HealCommand;
-import com.github.capitalistspz.command.VelocityCommand;
+import com.github.capitalistspz.commands.DamageCommand;
+import com.github.capitalistspz.commands.ExScoreboardCommand;
+import com.github.capitalistspz.commands.HealCommand;
+import com.github.capitalistspz.commands.VelocityCommand;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;

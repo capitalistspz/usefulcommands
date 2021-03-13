@@ -1,4 +1,4 @@
-package com.github.capitalistspz.command;
+package com.github.capitalistspz.commands;
 
 import com.github.capitalistspz.utils.CommandUtils;
 import com.mojang.brigadier.Command;
