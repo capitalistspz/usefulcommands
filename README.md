@@ -11,6 +11,7 @@ More datapack tags (e.g. #extra:zombies)
 
 `/damage` and `/heal` (modify health, also works with players)
 
+`/data` has been modified to allow player NBT modification
 
 Q: Why even use this mod? What's the point of using datapacks if you're already using mods.
 
