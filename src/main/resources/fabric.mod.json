@@ -13,13 +13,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.capitlistspz.useful_commands"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "usefulcommands.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.10.8",
-    "fabric": "*",
     "minecraft": "1.16.4"
   }
 }
