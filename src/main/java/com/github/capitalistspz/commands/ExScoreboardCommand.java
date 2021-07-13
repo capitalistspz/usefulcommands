@@ -4,8 +4,8 @@ import com.github.capitalistspz.utils.CommandUtils;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.command.argument.ObjectiveArgumentType;
 import net.minecraft.command.argument.ScoreHolderArgumentType;
+import net.minecraft.command.argument.ScoreboardObjectiveArgumentType;
 import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.LiteralText;
@@ -22,18 +22,18 @@ public class ExScoreboardCommand {
 
         // Scoreboard Operation command definition scope
         {
-            scoreboardMaths.then(argument("target", ScoreHolderArgumentType.scoreHolder()).then(argument("targetObjective", ObjectiveArgumentType.objective())
+            scoreboardMaths.then(argument("target", ScoreHolderArgumentType.scoreHolder()).then(argument("targetObjective", ScoreboardObjectiveArgumentType.scoreboardObjective())
                     .then(literal("pow")
                             .then(argument("source",ScoreHolderArgumentType.scoreHolder())
-                                    .then(argument("sourceObjective", ObjectiveArgumentType.objective())
+                                    .then(argument("sourceObjective", ScoreboardObjectiveArgumentType.scoreboardObjective())
                                             .executes(cmd->{
                                                 World world = cmd.getSource().getWorld();
                                                 if (world == null){
                                                     cmd.getSource().sendFeedback(new LiteralText("Failure: This command must be executed in a world."),false);
                                                     return CommandUtils.SINGLE_FAIL;
                                                 }
-                                                ScoreboardPlayerScore targetScore = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"target"),ObjectiveArgumentType.getObjective(cmd,"targetObjective"));
-                                                ScoreboardPlayerScore sourceScore =  world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"source"),ObjectiveArgumentType.getObjective(cmd,"sourceObjective"));
+                                                ScoreboardPlayerScore targetScore = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"target"),ScoreboardObjectiveArgumentType.getObjective(cmd,"targetObjective"));
+                                                ScoreboardPlayerScore sourceScore =  world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"source"),ScoreboardObjectiveArgumentType.getObjective(cmd,"sourceObjective"));
                                                 targetScore.setScore(powScore(targetScore,sourceScore));
                                                 return Command.SINGLE_SUCCESS; }))))
                     .then(literal("sqrt")
@@ -43,7 +43,7 @@ public class ExScoreboardCommand {
                                     cmd.getSource().sendFeedback(new LiteralText("Failure: This command must be executed in a world."),false);
                                     return CommandUtils.SINGLE_FAIL;
                                 }
-                                ScoreboardPlayerScore targetScore = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"target"),ObjectiveArgumentType.getObjective(cmd,"targetObjective"));
+                                ScoreboardPlayerScore targetScore = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"target"),ScoreboardObjectiveArgumentType.getObjective(cmd,"targetObjective"));
                                 targetScore.setScore((int)Math.sqrt(targetScore.getScore()));
                                 return Command.SINGLE_SUCCESS;
                             }))));

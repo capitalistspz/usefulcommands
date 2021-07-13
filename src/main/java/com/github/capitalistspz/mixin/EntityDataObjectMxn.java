@@ -3,7 +3,7 @@ package com.github.capitalistspz.mixin;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.minecraft.command.EntityDataObject;
 import net.minecraft.entity.Entity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -19,16 +19,15 @@ public abstract class EntityDataObjectMxn {
     @Final
     @Shadow
     private Entity entity;
-
     /**
      * @author capitalistspz
      * @reason Allow modification of all player NBT apart from UUID
      *
      */
     @Overwrite
-    public void setTag(CompoundTag tag){
+    public void setNbt(NbtCompound nbt){
         UUID uUID = this.entity.getUuid();
-        this.entity.fromTag(tag);
+        this.entity.readNbt(nbt);
         this.entity.setUuid(uUID);
     }
 }

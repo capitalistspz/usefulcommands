@@ -6,7 +6,7 @@ import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.command.argument.EntityArgumentType;
-import net.minecraft.command.argument.ObjectiveArgumentType;
+import net.minecraft.command.argument.ScoreboardObjectiveArgumentType;
 import net.minecraft.command.argument.ScoreHolderArgumentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -35,11 +35,11 @@ public class DamageCommand {
                                                     executeDamage(cmd, EntityArgumentType.getEntity(cmd, "target"),FloatArgumentType.getFloat(cmd,"damageAmount")))))
                             .then(literal("score")
                                     .then(argument("source", ScoreHolderArgumentType.scoreHolder())
-                                            .then(argument("sourceObjective", ObjectiveArgumentType.objective())
+                                            .then(argument("sourceObjective", ScoreboardObjectiveArgumentType.scoreboardObjective())
                                                     .then(argument("scale", FloatArgumentType.floatArg())
                                                             .executes(cmd->{
                                                                 World world = cmd.getSource().getWorld();
-                                                                ScoreboardPlayerScore score = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"source"),ObjectiveArgumentType.getObjective(cmd,"sourceObjective"));
+                                                                ScoreboardPlayerScore score = world.getScoreboard().getPlayerScore(ScoreHolderArgumentType.getScoreHolder(cmd,"source"),ScoreboardObjectiveArgumentType.getObjective(cmd,"sourceObjective"));
                                                                 float val = score.getScore() * FloatArgumentType.getFloat(cmd,"scale");
                                                                 executeDamage(cmd,EntityArgumentType.getEntity(cmd, "target"),val);
                                                                 return Command.SINGLE_SUCCESS; })))))));
